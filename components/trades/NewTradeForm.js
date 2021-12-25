@@ -5,17 +5,24 @@ import classes from "./NewTradeForm.module.css";
 
 function NewTradeForm(props) {
   const symbolInputRef = useRef();
-  const typeInputRef = useRef();
+  const shortInputRef = useRef();
+  const longInputRef = useRef();
   const entryPriceInputRef = useRef();
   const commentInputRef = useRef();
 
   function submitHandler(event) {
     event.preventDefault();
 
+    let enteredType;
     const enteredSymbol = symbolInputRef.current.value;
-    const enteredType = typeInputRef.current.value;
     const enteredEntryPrice = entryPriceInputRef.current.value;
     const enteredComment = commentInputRef.current.value;
+
+    if (shortInputRef.current.checked) {
+      enteredType = "short";
+    } else {
+      enteredType = "long";
+    }
 
     const tradeData = {
       symbol: enteredSymbol,
@@ -29,7 +36,7 @@ function NewTradeForm(props) {
 
   return (
     <Fragment>
-      <h1 className={classes.heading}>Log an Active Trade</h1>
+      <h1 className="heading">Log an Active Trade</h1>
       <Card>
         <form className={classes.form} onSubmit={submitHandler}>
           <div className={classes.control}>
@@ -46,7 +53,8 @@ function NewTradeForm(props) {
               name="type"
               required
               id="long"
-              ref={typeInputRef}
+              value="long"
+              ref={longInputRef}
             />
             <label htmlFor="short">Short</label>
             <input
@@ -54,7 +62,8 @@ function NewTradeForm(props) {
               name="type"
               required
               id="short"
-              ref={typeInputRef}
+              value="short"
+              ref={shortInputRef}
             />
           </div>
 
