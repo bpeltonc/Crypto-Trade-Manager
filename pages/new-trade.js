@@ -7,6 +7,8 @@ const NewTradePage = () => {
   const router = useRouter();
 
   const addTradeHandler = async (enteredTradeData) => {
+    console.log("add trade handler");
+
     const response = await fetch("/api/new-trade", {
       method: "POST",
       body: JSON.stringify(enteredTradeData),
@@ -19,7 +21,7 @@ const NewTradePage = () => {
 
     console.log(data);
 
-    router.push("/");
+    router.replace("/");
   };
 
   return (

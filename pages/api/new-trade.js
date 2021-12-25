@@ -4,22 +4,28 @@ import { MongoClient } from "mongodb";
 
 const handler = async (req, res) => {
   if (req.method === "POST") {
-    const dbUrl = process.env.DB_URL;
+    console.log("API Request Received");
 
     const data = req.body;
 
-    const client = await MongoClient.connect(dbUrl);
-    const db = client.db();
+    try {
+      const client = await MongoClient.connect(process.env.DB_URL);
+      console.log("Connection made");
 
-    const tradesCollection = db.collection("trades");
+      const db = client.db();
 
-    const result = await tradesCollection.insertOne(data);
+      const tradesCollection = db.collection("trades");
 
-    console.log(result);
+      const result = await tradesCollection.insertOne(data);
 
-    client.close();
+      console.log(result);
 
-    res.status(201).json({ message: "Trade logged!" });
+      client.close();
+
+      res.status(201).json({ message: "Trade logged!" });
+    } catch (err) {
+      console.log(err);
+    }
   }
 };
 

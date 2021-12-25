@@ -4,7 +4,7 @@ import classes from "./MainNavigation.module.css";
 const MainNavigation = (props) => {
   return (
     <header className={classes.header}>
-      <div classname={classes.logo}>Crypto Trade Manager</div>
+      <div className={classes.logo}>Crypto Trade Manager</div>
       <nav>
         <ul>
           <li>
