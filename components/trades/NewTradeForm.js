@@ -4,27 +4,27 @@ import Card from "../ui/Card";
 import classes from "./NewTradeForm.module.css";
 
 function NewTradeForm(props) {
-  const titleInputRef = useRef();
-  const imageInputRef = useRef();
-  const addressInputRef = useRef();
-  const descriptionInputRef = useRef();
+  const symbolInputRef = useRef();
+  const typeInputRef = useRef();
+  const entryPriceInputRef = useRef();
+  const commentInputRef = useRef();
 
   function submitHandler(event) {
     event.preventDefault();
 
-    const enteredTitle = titleInputRef.current.value;
-    const enteredImage = imageInputRef.current.value;
-    const enteredAddress = addressInputRef.current.value;
-    const enteredDescription = descriptionInputRef.current.value;
+    const enteredSymbol = symbolInputRef.current.value;
+    const enteredType = typeInputRef.current.value;
+    const enteredEntryPrice = entryPriceInputRef.current.value;
+    const enteredComment = commentInputRef.current.value;
 
-    const TradeData = {
-      title: enteredTitle,
-      image: enteredImage,
-      address: enteredAddress,
-      description: enteredDescription,
+    const tradeData = {
+      symbol: enteredSymbol,
+      type: enteredType,
+      entryPrice: enteredEntryPrice,
+      comment: enteredComment,
     };
 
-    props.onAddTrade(TradeData);
+    props.onAddTrade(tradeData);
   }
 
   return (
@@ -33,24 +33,47 @@ function NewTradeForm(props) {
       <Card>
         <form className={classes.form} onSubmit={submitHandler}>
           <div className={classes.control}>
-            <label htmlFor="title">Trade Title</label>
-            <input type="text" required id="title" ref={titleInputRef} />
+            <label htmlFor="symbol">Symbol</label>
+            <input type="text" required id="symbol" ref={symbolInputRef} />
           </div>
           <div className={classes.control}>
-            <label htmlFor="image">Trade Image</label>
-            <input type="url" required id="image" ref={imageInputRef} />
+            <label>Type</label>
+          </div>
+          <div className={classes.radioOptions}>
+            <label htmlFor="long">Long</label>
+            <input
+              type="radio"
+              name="type"
+              required
+              id="long"
+              ref={typeInputRef}
+            />
+            <label htmlFor="short">Short</label>
+            <input
+              type="radio"
+              name="type"
+              required
+              id="short"
+              ref={typeInputRef}
+            />
+          </div>
+
+          <div className={classes.control}>
+            <label htmlFor="entryPrice">Entry Price</label>
+            <input
+              type="text"
+              required
+              id="entryPrice"
+              ref={entryPriceInputRef}
+            />
           </div>
           <div className={classes.control}>
-            <label htmlFor="address">Address</label>
-            <input type="text" required id="address" ref={addressInputRef} />
-          </div>
-          <div className={classes.control}>
-            <label htmlFor="description">Description</label>
+            <label htmlFor="comment">Comment</label>
             <textarea
-              id="description"
+              id="comment"
               required
               rows="5"
-              ref={descriptionInputRef}
+              ref={commentInputRef}
             ></textarea>
           </div>
           <div className={classes.actions}>

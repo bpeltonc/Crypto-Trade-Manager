@@ -28,6 +28,20 @@
   width: 100%;
 }
 
+.radioOptions div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.radioOptions label,
+.radioOptions input {
+  display: inline;
+  font-size: 0.8rem;
+  margin-bottom: 1rem;
+  color: black;
+}
+
 .actions {
   margin-top: 1rem;
   text-align: right;
