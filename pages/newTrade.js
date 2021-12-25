@@ -1,7 +1,7 @@
 import { Fragment } from "react/cjs/react.production.min";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import NewTradeForm from "..//components/trades/NewTradeForm";
+import NewTradeForm from "../components/trades/NewTradeForm";
 
 const NewTradePage = () => {
   const router = useRouter();

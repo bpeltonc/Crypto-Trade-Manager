@@ -11,7 +11,7 @@ const MainNavigation = (props) => {
             <Link href="/">All Trades</Link>
           </li>
           <li>
-            <Link href="/new-trade">Log New Trade</Link>
+            <Link href="/newTrade">Log New Trade</Link>
           </li>
         </ul>
       </nav>

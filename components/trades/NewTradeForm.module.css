@@ -10,7 +10,7 @@
   display: block;
   font-weight: bold;
   margin-bottom: 0.5rem;
-  color: #14213d;
+  color: #283618;
 }
 
 .control input,
@@ -45,19 +45,19 @@
 .actions button {
   font: inherit;
   cursor: pointer;
-  background-color: #fca311;
+  background-color: #bc6c25;
   color: #14213d;
   padding: 0.5rem 1.5rem;
-  border: 1px solid #fca311;
+  border: 1px solid #bc6c25;
   border-radius: 4px;
   font-weight: bold;
 }
 
 .actions button:hover {
-  box-shadow: 0 0 0.5em #14213d;
+  box-shadow: 0 0 0.5em #283618;
 }
 .actions button:active {
-  background-color: #14213d;
-  border-color: #14213d;
-  color: #e5e5e5;
+  background-color: #606c38;
+  border-color: #606c38;
+  color: #fefae0;
 }
