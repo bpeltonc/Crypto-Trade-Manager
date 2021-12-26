@@ -37,59 +37,61 @@ function NewTradeForm(props) {
   return (
     <Fragment>
       <h1 className="heading">Log an Active Trade</h1>
-      <Card>
-        <form className={classes.form} onSubmit={submitHandler}>
-          <div className={classes.control}>
-            <label htmlFor="symbol">Symbol</label>
-            <input type="text" required id="symbol" ref={symbolInputRef} />
-          </div>
-          <div className={classes.control}>
-            <label>Type</label>
-          </div>
-          <div className={classes.radioOptions}>
-            <label htmlFor="long">Long</label>
-            <input
-              type="radio"
-              name="type"
-              required
-              id="long"
-              value="long"
-              ref={longInputRef}
-            />
-            <label htmlFor="short">Short</label>
-            <input
-              type="radio"
-              name="type"
-              required
-              id="short"
-              value="short"
-              ref={shortInputRef}
-            />
-          </div>
+      <div className="form-container">
+        <Card>
+          <form className={classes.form} onSubmit={submitHandler}>
+            <div className={classes.control}>
+              <label htmlFor="symbol">Symbol</label>
+              <input type="text" required id="symbol" ref={symbolInputRef} />
+            </div>
+            <div className={classes.control}>
+              <label>Type</label>
+            </div>
+            <div className={classes.radioOptions}>
+              <label htmlFor="long">Long</label>
+              <input
+                type="radio"
+                name="type"
+                required
+                id="long"
+                value="long"
+                ref={longInputRef}
+              />
+              <label htmlFor="short">Short</label>
+              <input
+                type="radio"
+                name="type"
+                required
+                id="short"
+                value="short"
+                ref={shortInputRef}
+              />
+            </div>
 
-          <div className={classes.control}>
-            <label htmlFor="entryPrice">Entry Price</label>
-            <input
-              type="text"
-              required
-              id="entryPrice"
-              ref={entryPriceInputRef}
-            />
-          </div>
-          <div className={classes.control}>
-            <label htmlFor="comment">Comment</label>
-            <textarea
-              id="comment"
-              required
-              rows="5"
-              ref={commentInputRef}
-            ></textarea>
-          </div>
-          <div className={classes.actions}>
-            <button>Add Trade</button>
-          </div>
-        </form>
-      </Card>
+            <div className={classes.control}>
+              <label htmlFor="entryPrice">Entry Price</label>
+              <input
+                type="text"
+                required
+                id="entryPrice"
+                ref={entryPriceInputRef}
+              />
+            </div>
+            <div className={classes.control}>
+              <label htmlFor="comment">Comment</label>
+              <textarea
+                id="comment"
+                required
+                rows="5"
+                ref={commentInputRef}
+              ></textarea>
+            </div>
+            <div className={classes.actions}>
+              <button>Add Trade</button>
+            </div>
+          </form>
+        </Card>
+      </div>
     </Fragment>
   );
 }

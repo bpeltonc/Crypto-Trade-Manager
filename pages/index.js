@@ -56,13 +56,13 @@ export async function getStaticProps() {
     let profit = 0;
     let percentChange = 0;
 
-    if (trades[i].type === "LONG") {
+    if (trades[i].type === "long") {
       profit = currentPrice - trades[i].entryPrice;
     } else {
       profit = trades[i].entryPrice - currentPrice;
     }
 
-    percentChange = (profit / trades[i].entryPrice) * 100;
+    percentChange = ((profit / trades[i].entryPrice) * 100).toFixed(2);
 
     tradesWithCurrentPrices.push(
       new Object({
