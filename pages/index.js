@@ -4,6 +4,7 @@ import { MongoClient } from "mongodb";
 import { Fragment } from "react";
 import TradesList from "../components/trades/TradesList";
 import classes from "../styles/Home.module.css";
+import useFetchData from "../hooks/use-fetch-data";
 
 export default function Home(props) {
   return (
@@ -28,45 +29,22 @@ export async function getStaticProps() {
 
   const tradesCollection = db.collection("trades");
 
-  const trades = await tradesCollection.find().toArray();
+  const dbTrades = await tradesCollection.find().toArray();
 
   client.close();
 
-  console.log(trades);
+  let trades = [];
 
-  const getPrice = async (symbol) => {
-    const response = await fetch(
-      `https://api.bittrex.com/v3/markets/${symbol}/ticker`
-    );
-    if (response.status !== 200) {
-      throw new Error(response.status);
-    }
+  for (let i = 0; i < dbTrades.length; i++) {
+    const { currentPrice, profit, percentChange } = await useFetchData({
+      symbol: dbTrades[i].symbol,
+      type: dbTrades[i].type,
+      entryPrice: dbTrades[i].entryPrice,
+    });
 
-    const data = await response.json();
-
-    console.log(data.lastTradeRate);
-
-    return data.lastTradeRate;
-  };
-
-  let tradesWithCurrentPrices = [];
-
-  for (let i = 0; i < trades.length; i++) {
-    const currentPrice = await getPrice(trades[i].symbol);
-    let profit = 0;
-    let percentChange = 0;
-
-    if (trades[i].type === "long") {
-      profit = currentPrice - trades[i].entryPrice;
-    } else {
-      profit = trades[i].entryPrice - currentPrice;
-    }
-
-    percentChange = ((profit / trades[i].entryPrice) * 100).toFixed(2);
-
-    tradesWithCurrentPrices.push(
+    trades.push(
       new Object({
-        ...trades[i],
+        ...dbTrades[i],
         currentPrice,
         profit,
         percentChange,
@@ -74,11 +52,11 @@ export async function getStaticProps() {
     );
   }
 
-  console.log(tradesWithCurrentPrices);
+  console.log(trades);
 
   return {
     props: {
-      trades: tradesWithCurrentPrices.map((trade) => ({
+      trades: trades.map((trade) => ({
         symbol: trade.symbol,
         type: trade.type,
         entryPrice: trade.entryPrice,
