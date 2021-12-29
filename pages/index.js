@@ -1,5 +1,6 @@
 import Head from "next/head";
 import { MongoClient } from "mongodb";
+import { useSession } from "next-auth/react";
 
 import { Fragment } from "react";
 import TradesList from "../components/trades/TradesList";
@@ -7,6 +8,8 @@ import classes from "../styles/Home.module.css";
 import useFetchData from "../hooks/use-fetch-data";
 
 export default function Home(props) {
+  const { data: session } = useSession();
+
   return (
     <Fragment>
       <Head>
@@ -16,14 +19,15 @@ export default function Home(props) {
           content="Manage your crypto trades in one convenient app"
         />
       </Head>
-      <h1 className="heading">Open Trades</h1>
-      <TradesList trades={props.trades} />
+      {session && <h1 className="heading">Open Trades</h1>}
+      {session && <TradesList trades={props.trades} />}
+      {!session && <p>Please sign in to use the app</p>}
     </Fragment>
   );
 }
 
 export async function getStaticProps() {
-  const client = await MongoClient.connect(process.env.DB_URL);
+  const client = await MongoClient.connect(process.env.MONGODB_URI);
 
   const db = client.db();
 
@@ -51,8 +55,6 @@ export async function getStaticProps() {
       })
     );
   }
-
-  console.log(trades);
 
   return {
     props: {

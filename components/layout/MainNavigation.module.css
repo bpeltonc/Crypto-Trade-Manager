@@ -4,13 +4,13 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #606c38;
+  background-color: #060f0a;
   padding: 0 10%;
 }
 
 .logo {
   font-size: 2rem;
-  color: #fefae0;
+  color: #0d7ae7;
   font-weight: bold;
 }
 
@@ -29,11 +29,11 @@
 .header a {
   text-decoration: none;
   font-size: 1.5rem;
-  color: #283618;
+  color: #7b89b7;
 }
 
 .header a:hover,
 .header a:active,
 .header a:active {
-  color: #fefae0;
+  color: #ede9d4;
 }

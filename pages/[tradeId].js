@@ -48,7 +48,7 @@ export async function getStaticPaths() {
 export async function getStaticProps(context) {
   const tradeId = context.params.tradeId;
 
-  const client = await MongoClient.connect(process.env.DB_URL);
+  const client = await MongoClient.connect(process.env.MONGODB_URI);
   const db = client.db();
 
   const tradesCollection = db.collection("trades");

@@ -11,11 +11,12 @@
 .content {
   text-align: center;
   padding: 1rem;
+  color: #7b89b7;
 }
 
 .content h3 {
   font-size: 1.25rem;
-  color: #2c292b;
+  color: #7b89b7;
 }
 
 .actions {
@@ -26,8 +27,8 @@
 .actions button {
   font: inherit;
   cursor: pointer;
-  color: #283618;
-  border: 1px solid #283618;
+  color: #0d7ae7;
+  border: 1px solid #0d7ae7;
   background-color: transparent;
   padding: 0.5rem 1.5rem;
   border-radius: 4px;

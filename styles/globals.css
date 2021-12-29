@@ -3,7 +3,7 @@ body {
   padding: 0;
   margin: 0;
   font-family: "Oswald", sans-serif;
-  background-color: #fefae0;
+  background-color: #f1f2eb;
 }
 
 a {
@@ -17,5 +17,5 @@ a {
 
 .heading {
   text-align: center;
-  color: #283618;
+  color: #0d7ae7;
 }
