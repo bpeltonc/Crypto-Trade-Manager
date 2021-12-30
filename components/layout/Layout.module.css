@@ -1,4 +1,28 @@
 .main {
   margin: 3rem auto;
   width: 90%;
+  height: 90%;
+  flex-grow: initial;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  position: fixed;
+  left: 0;
+  bottom: 10%;
+  width: 100%;
+}
+
+.footer_line {
+  display: block;
+  background-color: #060f0a;
+  max-height: 2px;
+  width: 90%;
+}
+
+.footer_content {
+  color: #0d7ae7;
+  padding-top: 0.5em;
 }

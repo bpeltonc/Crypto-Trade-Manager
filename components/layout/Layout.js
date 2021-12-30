@@ -17,6 +17,13 @@ const Layout = (props) => {
       <div>
         <MainNavigation />
         <main className={classes.main}>{props.children}</main>
+        <footer className={classes.footer}>
+          <div className={classes.footer_line}>
+            <div className={classes.footer_content}>
+              ©2021 Brandon Pelton-Cox
+            </div>
+          </div>
+        </footer>
       </div>
     </Fragment>
   );
